@@ -1,7 +1,9 @@
 import { useColorMode } from "@vueuse/core";
 import { defineStore } from "pinia";
 import { ref } from "vue";
+import { COLOR_SCHEMA_STORAGE } from "~/constants/id";
 import themes from "~/themes";
+import type { ConvertTupleToObj, TupleToString } from "~/types";
 
 export const useSettingsStore = defineStore("settings", () => {
   const showHiddenItems = ref(false);
@@ -9,16 +11,16 @@ export const useSettingsStore = defineStore("settings", () => {
   const colorMode = useColorMode({
     modes: themes.reduce(
       (acc, curr) => ({ ...acc, [curr]: curr }),
-      {} as Record<string, string>,
+      {} as ConvertTupleToObj<typeof themes>,
     ),
-    storageKey: "finder-color-schema",
+    storageKey: COLOR_SCHEMA_STORAGE,
   });
 
   function toggleShowHiddenItems() {
     showHiddenItems.value = !showHiddenItems.value;
   }
 
-  function setTheme(newTheme: string) {
+  function setTheme(newTheme: TupleToString<typeof themes>) {
     colorMode.store.value = newTheme;
   }
 
