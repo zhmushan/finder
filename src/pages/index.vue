@@ -13,10 +13,12 @@ onMounted(async () => {
 </script>
 
 <template>
-  <Drawer :id="SETTINGS_DRAWER">
+  <Drawer :id="SETTINGS_DRAWER" class="h-full">
     <template v-if="workspace.current" v-slot:page_content>
-      <Nav />
-      <Explorer />
+      <div class="flex flex-col h-full">
+        <Nav />
+        <Explorer />
+      </div>
     </template>
 
     <template v-slot:sidebar_content>

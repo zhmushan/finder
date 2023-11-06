@@ -15,11 +15,6 @@ export interface EntryItem {
 <script setup lang="ts">
 import { computed } from "vue";
 import { getFileIconName } from "~/utils/get-icon-name";
-import { useWorkspaceStore } from "~/stores/workspace";
-import { invoke } from "@tauri-apps/api";
-import path from "path-browserify";
-
-const workspace = useWorkspaceStore();
 
 const { entry } = defineProps<{
   entry: EntryItem;
@@ -46,28 +41,10 @@ const fileIcon = computed(() => {
 
   return `src/assets/file-icons/${iconName}`;
 });
-
-function go(entry: EntryItem) {
-  switch (entry.type) {
-    case EntryType.Dir: {
-      workspace.go(entry.name);
-      break;
-    }
-    case EntryType.File:
-    default: {
-      invoke("open_file_paths", {
-        paths: [path.resolve(workspace.current, entry.name)],
-      });
-    }
-  }
-}
 </script>
 
 <template>
-  <div
-    class="flex flex-col p-3 rounded hover:bg-base-content hover:bg-opacity-20 hover:transition"
-    @dblclick="go(entry)"
-  >
+  <div class="flex flex-col">
     <div class="relative">
       <img :src="mainIcon" />
       <img
@@ -76,7 +53,7 @@ function go(entry: EntryItem) {
         class="absolute w-6 bottom-0 right-0"
       />
     </div>
-    <span class="-m-1 text-ellipsis overflow-hidden whitespace-nowrap">
+    <span class="-m-2 -my-1 text-ellipsis overflow-hidden whitespace-nowrap">
       {{ entry.name }}
     </span>
   </div>
