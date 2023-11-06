@@ -16,6 +16,8 @@ export interface EntryItem {
 import { computed } from "vue";
 import { getFileIconName } from "~/utils/get-icon-name";
 import { useWorkspaceStore } from "~/stores/workspace";
+import { invoke } from "@tauri-apps/api";
+import path from "path-browserify";
 
 const workspace = useWorkspaceStore();
 
@@ -46,8 +48,17 @@ const fileIcon = computed(() => {
 });
 
 function go(entry: EntryItem) {
-  if (entry.type === EntryType.Dir) {
-    workspace.go(entry.name);
+  switch (entry.type) {
+    case EntryType.Dir: {
+      workspace.go(entry.name);
+      break;
+    }
+    case EntryType.File:
+    default: {
+      invoke("open_file_paths", {
+        paths: [path.resolve(workspace.current, entry.name)],
+      });
+    }
   }
 }
 </script>
@@ -65,8 +76,8 @@ function go(entry: EntryItem) {
         class="absolute w-6 bottom-0 right-0"
       />
     </div>
-    <span class="text-ellipsis overflow-hidden whitespace-nowrap">{{
-      entry.name
-    }}</span>
+    <span class="-m-1 text-ellipsis overflow-hidden whitespace-nowrap">
+      {{ entry.name }}
+    </span>
   </div>
 </template>

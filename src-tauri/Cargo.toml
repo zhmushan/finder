@@ -17,6 +17,7 @@ tauri = { version = "1.5", features = [ "window-unmaximize", "window-start-dragg
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 serde_repr = "0.1.16"
+opener = "0.6.1"
 
 [features]
 # this feature is used for production builds or when `devPath` points to the filesystem
