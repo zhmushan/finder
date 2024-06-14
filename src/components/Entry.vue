@@ -44,7 +44,7 @@ const fileIcon = computed(() => {
 </script>
 
 <template>
-  <div class="flex flex-col">
+  <div class="flex flex-col" :title="entry.name">
     <div class="relative">
       <img :src="mainIcon" />
       <img
@@ -53,8 +53,8 @@ const fileIcon = computed(() => {
         class="absolute w-6 bottom-0 right-0"
       />
     </div>
-    <span class="-m-2 -my-1 text-ellipsis overflow-hidden whitespace-nowrap">
-      {{ entry.name }}
-    </span>
+    <div class="line-clamp-2 break-all text-xs">
+      <span>{{ entry.name }}</span>
+    </div>
   </div>
 </template>

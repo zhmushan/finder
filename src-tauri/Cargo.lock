@@ -677,6 +677,8 @@ dependencies = [
 name = "finder"
 version = "0.0.0"
 dependencies = [
+ "cocoa",
+ "objc",
  "opener",
  "serde",
  "serde_json",

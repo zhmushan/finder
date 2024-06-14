@@ -54,7 +54,7 @@ function go(entry: EntryItem) {
         <div
           v-for="(entry, idx) in state"
           :key="idx"
-          class="p-3 m-1 rounded transition select-none cursor-default hover:bg-base-content hover:bg-opacity-20"
+          class="px-2 m-1 rounded transition select-none cursor-default hover:bg-base-content hover:bg-opacity-20"
           :class="{
             'bg-base-content bg-opacity-20': focused === entry.name,
           }"

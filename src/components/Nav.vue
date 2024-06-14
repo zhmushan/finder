@@ -25,23 +25,22 @@ const pathList = computed(() => {
 });
 </script>
 <template>
-  <div class="flex items-center gap-3">
-    <div class="join">
-      <button
-        class="btn btn-sm btn-outline join-item"
-        :disabled="!workspace.canBack"
-        @click="workspace.back"
-      >
-        <span class="icon-[material-symbols--arrow-back-ios-rounded]" />
-      </button>
-      <button
-        class="btn btn-sm btn-outline join-item"
-        :disabled="!workspace.canForward"
-        @click="workspace.forward"
-      >
-        <div class="icon-[material-symbols--arrow-forward-ios-rounded]" />
-      </button>
-    </div>
+  <div class="flex items-center gap-1">
+    <button
+      class="btn btn-ghost btn-xs"
+      :disabled="!workspace.canBack"
+      @click="workspace.back"
+    >
+      <span class="icon-[material-symbols--arrow-back-ios-rounded]" />
+    </button>
+    <button
+      class="btn btn-ghost btn-xs"
+      :disabled="!workspace.canForward"
+      @click="workspace.forward"
+    >
+      <div class="icon-[material-symbols--arrow-forward-ios-rounded]" />
+    </button>
+
     <div class="text-sm breadcrumbs">
       <ul>
         <li>
@@ -60,7 +59,7 @@ const pathList = computed(() => {
     <div>
       <label
         :for="SETTINGS_DRAWER"
-        class="btn btn-square btn-ghost drawer-button"
+        class="btn btn-square btn-ghost btn-sm drawer-button"
       >
         <div
           class="w-5 h-5 icon-[material-symbols--settings-outline-rounded]"
