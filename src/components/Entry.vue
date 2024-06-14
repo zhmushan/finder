@@ -23,9 +23,9 @@ const { entry } = defineProps<{
 const mainIcon = computed(() =>
   entry.type === EntryType.Dir
     ? entry.empty
-      ? "src/assets/folder-empty.svg"
-      : "src/assets/folder.svg"
-    : "src/assets/file.svg",
+      ? "/assets/folder-empty.svg"
+      : "/assets/folder.svg"
+    : "/assets/file.svg",
 );
 
 const fileIcon = computed(() => {
@@ -39,7 +39,7 @@ const fileIcon = computed(() => {
     return;
   }
 
-  return `src/assets/file-icons/${iconName}`;
+  return `/assets/file-icons/${iconName}`;
 });
 </script>
 

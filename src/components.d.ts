@@ -7,7 +7,6 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    Dialog: typeof import('./components/Dialog.vue')['default']
     Drawer: typeof import('./components/Drawer.vue')['default']
     Entry: typeof import('./components/Entry.vue')['default']
     Explorer: typeof import('./components/Explorer.vue')['default']

@@ -1,4 +1,4 @@
-import rawFileIconIndex from "~/assets/file-icons-index.csv?raw";
+import rawFileIconIndex from "./file-icons-index.csv?raw";
 
 const rowSeparator = "\n";
 const colSeparator = ",";
